@@ -14,6 +14,7 @@ int nTail;
 enum Direction { STOP = 0, LEFT, RIGHT, UP, DOWN };
 Direction dir;
 
+void HideCursor(); // Ẩn con trỏ soạn thảo tránh gây nhiễu loạn khi chơi 
 void Setup(); //  Các thiết lập ban đầu về chiều dài, chiều rộng khung, toạ độ hiển thị của rắn, thức ăn, điểm, số đốt đuôi
 void Draw(); // Vẽ khung, điểm, nói chung là giao diện chơi
 void Input(); // Thiết lập các nút bấm vào trong trò chơi
