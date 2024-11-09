@@ -187,3 +187,15 @@ void Draw() {
     }
 }
 
+void GameOverScreen() {
+    cout << "\nGame Over! Final Score: " << score << endl;
+    cout << "Do you want to play again? (y/n): ";
+    char choice;
+    cin >> choice;
+    if (choice == 'y' || choice == 'Y') {
+        Setup();
+    } else {
+        gameOver = true;
+    }
+    system("cls");
+}
