@@ -186,4 +186,19 @@ void Draw() {
         cout << "Game paused - Press P to continue." << endl;
     }
 }
+void ShowInstructions() {
+    system("cls");
+    cout << "=================== SNAKE GAME ===================" << endl;
+    cout << "Instructions:" << endl;
+    cout << "  - Use 'W' to move UP" << endl;
+    cout << "  - Use 'A' to move LEFT" << endl;
+    cout << "  - Use 'S' to move DOWN" << endl;
+    cout << "  - Use 'D' to move RIGHT" << endl;
+    cout << "  - Press 'X' to exit the game" << endl;
+    cout << "\nObjective: Eat the '*' to grow the snake and score points." << endl;
+    cout << "Avoid hitting the walls or your own tail!" << endl;
+    cout << "\nPress any key to start playing..." << endl;
+    _getch();
+    system("cls");
+}
 
