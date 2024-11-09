@@ -51,7 +51,16 @@ void Input() {
     }
 }
 void GenerateFruit() {
-    bool fruitOnSnake;  // Biến để kiểm tra nếu quả xuất hiện trên thân rắn
+    bool fruitOnSnake;
+    int maxCells = width * height;
+    
+    // Kiểm tra nếu rắn đã chiếm toàn bộ bảng
+    if (nTail + 1 >= maxCells) {  // +1 để bao gồm cả đầu rắn
+        cout << "\nCongratulations! You've filled the entire board!" << endl;
+        gameOver = true;
+        return;
+    }
+
     do {
         fruitOnSnake = false;
         fruitX = rand() % width;
