@@ -50,6 +50,27 @@ void Input() {
         }
     }
 }
+void GenerateFruit() {
+    bool fruitOnSnake;  // Biến để kiểm tra nếu quả xuất hiện trên thân rắn
+    do {
+        fruitOnSnake = false;
+        fruitX = rand() % width;
+        fruitY = rand() % height;
+
+        // Kiểm tra xem vị trí của quả có trùng với đầu rắn không
+        if (fruitX == x && fruitY == y) {
+            fruitOnSnake = true;
+        }
+        
+        // Kiểm tra xem vị trí của quả có trùng với bất kỳ phần nào của đuôi rắn không
+        for (int i = 0; i < nTail; i++) {
+            if (tailX[i] == fruitX && tailY[i] == fruitY) {
+                fruitOnSnake = true;
+                break;
+            }
+        }
+    } while (fruitOnSnake);  // Lặp lại nếu quả xuất hiện trên thân rắn
+}
 
 void Logic() {
     if (paused ) return;
@@ -103,9 +124,8 @@ void Logic() {
 
     if (x == fruitX && y == fruitY) {
         score += 10;
-        fruitX = rand() % width;
-        fruitY = rand() % height;
         nTail++;
+        GenerateFruit();  // Gọi hàm tạo quả với vị trí mới không trùng với thân rắn
     }
 }
 
