@@ -26,7 +26,33 @@ void Draw() {
 }
 
 void Input() {
-
+    if (_kbhit()) {
+        switch (_getch()) {
+        case 'a':
+            if (dir != RIGHT) dir = LEFT;
+            break;
+        case 'd':
+            if (dir != LEFT) dir = RIGHT;
+            break;
+        case 'w':
+            if (dir != DOWN) dir = UP;
+            break;
+        case 's':
+            if (dir != UP) dir = DOWN;
+            break;
+        case 'p':
+            paused = !paused;
+            if (paused == false) system("cls");
+            break;
+        case 'x':
+            cout << "Are you sure you want to quit? (y/n):";
+            char confirm;
+            confirm = _getch();
+            if (confirm == 'y' || confirm == 'Y') gameOver = true;
+            system("cls");
+            break;
+        }
+    }
 }
 
 void Logic() {
