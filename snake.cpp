@@ -73,13 +73,13 @@ void GenerateFruit() {
 }
 
 void Logic() {
-    if (paused ) return;
-    // Kiểm tra thời gian hiện tại so với thời điểm di chuyển trước
+    if (paused) return;  // Nếu đang tạm dừng, không cập nhật logic
+
     DWORD currentTime = GetTickCount();
-    if (currentTime - lastMoveTime < 100)  // Rắn di chuyển mỗi 100ms
+    if (currentTime - lastMoveTime < 100)
         return;
 
-    lastMoveTime = currentTime;  // Cập nhật thời điểm di chuyển mới
+    lastMoveTime = currentTime;
 
     int prevX = tailX[0];
     int prevY = tailY[0];
@@ -176,4 +176,33 @@ void Draw() {
     {
         cout << "Game paused - Press P to continue." << endl;
     }
+}
+
+void ShowInstructions() {
+    system("cls");
+    cout << "=================== SNAKE GAME ===================" << endl;
+    cout << "Instructions:" << endl;
+    cout << "  - Use 'W' to move UP" << endl;
+    cout << "  - Use 'A' to move LEFT" << endl;
+    cout << "  - Use 'S' to move DOWN" << endl;
+    cout << "  - Use 'D' to move RIGHT" << endl;
+    cout << "  - Press 'X' to exit the game" << endl;
+    cout << "\nObjective: Eat the '*' to grow the snake and score points." << endl;
+    cout << "Avoid hitting the walls or your own tail!" << endl;
+    cout << "\nPress any key to start playing..." << endl;
+    _getch();
+    system("cls");
+}
+
+void GameOverScreen() {
+    cout << "\nGame Over! Final Score: " << score << endl;
+    cout << "Do you want to play again? (y/n): ";
+    char choice;
+    cin >> choice;
+    if (choice == 'y' || choice == 'Y') {
+        Setup();
+    } else {
+        gameOver = true;
+    }
+    system("cls");
 }
