@@ -187,5 +187,3 @@ void Draw() {
     }
 }
 
-    system("cls");
-}
