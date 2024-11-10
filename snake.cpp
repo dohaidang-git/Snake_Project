@@ -186,7 +186,6 @@ void Draw() {
         cout << "Game paused - Press P to continue." << endl;
     }
 }
-
 void ShowInstructions() {
     system("cls");
     cout << "=================== SNAKE GAME ===================" << endl;
