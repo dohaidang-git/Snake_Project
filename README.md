@@ -3,16 +3,17 @@
 ## Giới thiệu
 
 Lớp: **SS004.P12**
+
 Tên nhóm: **DPBL**  
 
 Thành viên:
 
-| STT |           Tên           |   MSSV    |  Ghi chú   |
-|:---:|:-----------------------:|:---------:|:----------:|
-|  1  | Phan Nguyễn Việt Bắc    | 23530087  |            |
-|  2  |      Đỗ Hải Đăng        | 23520225  |            |
-|  3  |    Nguyễn Văn Lộc       | 23520863  |            |
-|  4  | Trần Thái Anh Phong     | 23521174  |            |
+| STT |           Tên           |   MSSV    |
+|:---:|:-----------------------:|:---------:|
+|  1  | Phan Nguyễn Việt Bắc    | 23530087  |
+|  2  |      Đỗ Hải Đăng        | 23520225  |
+|  3  |    Nguyễn Văn Lộc       | 23520863  |
+|  4  | Trần Thái Anh Phong     | 23521174  |
 
 ## Mô tả trò chơi
 
@@ -21,6 +22,7 @@ Thành viên:
 **Rắn săn mồi** là trò chơi điều khiển một con rắn di chuyển trên màn hình để ăn thức ăn và tránh va vào tường hoặc chính thân mình.
 
 1. Mục tiêu:
+
     + Điều khiển con rắn ăn thức ăn xuất hiện trên màn hình. Mỗi lần ăn, con rắn sẽ dài ra và bạn nhận điểm.
     + Trò chơi kết thúc khi con rắn va vào tường hoặc chính thân mình.
 
@@ -49,7 +51,8 @@ Thành viên:
 ```
 
 ```bash
-git clone https://github.com/username/snake-game.git
+git clone https://github.com/dohaidang-git/Snake_Project
+cd Snake_Project
 g++ -o main main.cpp
 ./main
 ```
