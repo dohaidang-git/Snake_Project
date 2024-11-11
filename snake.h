@@ -16,7 +16,7 @@ enum Direction { STOP = 0, LEFT, RIGHT, UP, DOWN };
 Direction dir;
 DWORD lastMoveTime;
 
-void HideCursor(); // Ẩn con trỏ soạn thảo tránh gây khó nhìn (cái này viết rô)
+void HideCursor(); // Ẩn con trỏ soạn thảo tránh gây khó nhìn 
 void Setup(); //  Các thiết lập ban đầu về chiều dài, chiều rộng khung, toạ độ hiển thị của rắn, thức ăn, điểm, số đốt đuôi
 void Draw(); // Vẽ khung, điểm, nói chung là giao diện chơi
 void Input(); // Thiết lập các nút bấm vào trong trò chơi
