@@ -1,3 +1,0 @@
-# Snake
- 
-# Code Snake
