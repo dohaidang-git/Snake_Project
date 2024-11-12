@@ -138,7 +138,7 @@ void Logic() {
     if (paused) return;  // Nếu đang tạm dừng, không cập nhật logic
 
     DWORD currentTime = GetTickCount();
-    if (currentTime - lastMoveTime < 100)
+    if (currentTime - lastMoveTime < delay)
         return;
 
     lastMoveTime = currentTime;
@@ -248,6 +248,7 @@ void ShowInstructions() {
     cout << "  - Use 'S' to move DOWN" << endl;
     cout << "  - Use 'D' to move RIGHT" << endl;
     cout << "  - Press 'X' to exit the game" << endl;
+    cout << "  - Press 'P' to pause the game" << endl;
     cout << "\nObjective: Eat the '*' to grow the snake and score points." << endl;
     cout << "Avoid hitting the walls or your own tail!" << endl;
     cout << "\nPress any key to start playing..." << endl;

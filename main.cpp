@@ -1,4 +1,4 @@
-#include "snake.h"
+#include "snake.cpp"
 
 // Khúc này là phần chạy game nè
 int main() 
