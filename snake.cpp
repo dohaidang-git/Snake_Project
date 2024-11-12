@@ -53,7 +53,7 @@ void Input() {
 void GenerateFruit() {
     bool fruitOnSnake;
     int maxCells = width * height;
-    
+
     // Kiểm tra nếu rắn đã chiếm toàn bộ bảng
     if (nTail + 1 >= maxCells) {  // +1 để bao gồm cả đầu rắn
         cout << "\nCongratulations! You've filled the entire board!" << endl;
@@ -70,7 +70,7 @@ void GenerateFruit() {
         if (fruitX == x && fruitY == y) {
             fruitOnSnake = true;
         }
-        
+
         // Kiểm tra xem vị trí của quả có trùng với bất kỳ phần nào của đuôi rắn không
         for (int i = 0; i < nTail; i++) {
             if (tailX[i] == fruitX && tailY[i] == fruitY) {
@@ -83,7 +83,7 @@ void GenerateFruit() {
 
 void Logic() {
     if (paused) return;  // Nếu đang tạm dừng, không cập nhật logic
-                                                                                                                                                                   
+
     DWORD currentTime = GetTickCount();
     if (currentTime - lastMoveTime < 100)
         return;
