@@ -8,6 +8,59 @@ void HideCursor() { // Ẩn con trỏ soạn thảo
     SetConsoleCursorInfo(consoleHandle, &cursorInfo);
 }
 
+void SetupGameSettings() {
+    int difficultyChoice;
+    int sizeChoice;
+
+    cout << "Choose the size:\n";
+    cout << "1. Small (20x10)\n";
+    cout << "2. Normal (40x20)\n";
+    cout << "3. Large (60x30)\n";
+    cout << "Your choice: ";
+    cin >> sizeChoice;
+
+    switch (sizeChoice) {
+        case 1:
+            width = 20;
+            height = 10;
+            break;
+        case 2:
+            width = 40;
+            height = 20;
+            break;
+        case 3:
+            width = 60;
+            height = 30;
+            break;
+        default:
+            cout << "The choice is not avaiable! Using the default size (40x20).\n";
+            width = 40;
+            height = 20;
+    }
+
+    cout << "\nChoose the difficulty:\n";
+    cout << "1. Easy (Slow)\n";
+    cout << "2. Normal\n";
+    cout << "3. Hard (Fast)\n";
+    cout << "Your Choice: ";
+    cin >> difficultyChoice;
+
+    switch (difficultyChoice) {
+        case 1:
+            delay = 150;
+            break;
+        case 2:
+            delay = 100;
+            break;
+        case 3:
+            delay = 50;
+            break;
+        default:
+            cout << "The choice is not avaiable! Using the default difficulty (Normal).\n";
+            delay = 100;
+    }
+}
+
 void Setup() {
     gameOver = false;
     paused = false;
