@@ -1,4 +1,4 @@
-#include "snake.h"
+#include "snake.cpp"
 
 // Khúc này là phần chạy game nè
 int main() 
@@ -6,7 +6,6 @@ int main()
     HideCursor();
     srand(static_cast<unsigned int>(time(0)));
     ShowInstructions();
-    SetupGameSettings();
     Setup();
     while (true) {
         while (!gameOver) {
