@@ -62,6 +62,7 @@ void SetupGameSettings() {
 }
 
 void Setup() {
+    SetupGameSettings();
     gameOver = false;
     paused = false;
     dir = STOP;
@@ -72,6 +73,7 @@ void Setup() {
     score = 0;
     nTail = 0;
     lastMoveTime = GetTickCount(); // Lấy thời gian hiện tại
+    
 }
 
 void Input() {
@@ -138,7 +140,7 @@ void Logic() {
     if (paused) return;  // Nếu đang tạm dừng, không cập nhật logic
 
     DWORD currentTime = GetTickCount();
-    if (currentTime - lastMoveTime < 100)
+    if (currentTime - lastMoveTime < delay)
         return;
 
     lastMoveTime = currentTime;
