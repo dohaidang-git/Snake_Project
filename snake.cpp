@@ -14,8 +14,7 @@ void SetupGameSettings() {
 
     cout << "Choose the size:\n";
     cout << "1. Small (20x10)\n";
-    cout << "2. Normal (40x20)\n";
-    cout << "3. Large (60x30)\n";
+    cout << "2. Large (40x20)\n";
     cout << "Your choice: ";
     cin >> sizeChoice;
 
