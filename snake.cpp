@@ -197,6 +197,10 @@ void Draw() {
     cursorPosition.Y = 0;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cursorPosition);
 
+    ifstream input("file.txt");
+    fstream output;
+    output.open("file.txt");
+
     for (int i = 0; i < width + 2; i++)
         cout << "#";
     cout << endl;
@@ -231,9 +235,11 @@ void Draw() {
     for (int i = 0; i < width + 2; i++)
         cout << "#";
     cout << endl;
-    maxx = max(maxx,score);
+    input>>maxx;
+    if (maxx < score) maxx = score;
     cout << "Score: " << score << endl;
     cout << "Highest Score: " << maxx << endl;
+    output<<maxx;
     if (paused)
     {
         cout << "Game paused - Press P to continue." << endl;
