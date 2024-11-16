@@ -7,8 +7,7 @@
 using namespace std;
 
 bool gameOver, paused;
-const int width = 20;
-const int height = 17;
+int width, height, delay;
 int x, y, fruitX, fruitY, score;
 int maxx = 0;
 int tailX[100], tailY[100];
