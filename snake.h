@@ -2,6 +2,7 @@
 #include <conio.h>
 #include <windows.h>
 #include <ctime>
+#include <fstream>
 
 using namespace std;
 
@@ -22,5 +23,5 @@ void Draw(); // Vẽ khung, điểm, nói chung là giao diện chơi
 void Input(); // Thiết lập các nút bấm vào trong trò chơi
 void GenerateFruit(); // Thiết lập mồi không xuất hiện trên thân rắn
 void Logic(); // Các hàm kiểm tra về các hành vi của rắn
-void ShowInstructions(); // Dòng mô tả trò chơi cho người dùng cuối 
+void ShowInstructions(); // Dòng mô tả trò chơi cho người dùng cuối
 void GameOverScreen(); // Màn hình thua cuộc

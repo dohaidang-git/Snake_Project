@@ -8,7 +8,56 @@ void HideCursor() { // Ẩn con trỏ soạn thảo
     SetConsoleCursorInfo(consoleHandle, &cursorInfo);
 }
 
+void SetupGameSettings() {
+    int difficultyChoice;
+    int sizeChoice;
+
+    cout << "Choose the size:\n";
+    cout << "1. Small (20x10)\n";
+    cout << "2. Large (40x20)\n";
+    cout << "Your choice: ";
+    cin >> sizeChoice;
+
+    switch (sizeChoice) {
+        case 1:
+            width = 20;
+            height = 10;
+            break;
+        case 2:
+            width = 40;
+            height = 20;
+            break;
+        default:
+            cout << "The choice is not avaiable! Using the default size (40x20).\n";
+            width = 40;
+            height = 20;
+    }
+
+    cout << "\nChoose the difficulty:\n";
+    cout << "1. Easy (Slow)\n";
+    cout << "2. Normal\n";
+    cout << "3. Hard (Fast)\n";
+    cout << "Your Choice: ";
+    cin >> difficultyChoice;
+
+    switch (difficultyChoice) {
+        case 1:
+            delay = 150;
+            break;
+        case 2:
+            delay = 100;
+            break;
+        case 3:
+            delay = 50;
+            break;
+        default:
+            cout << "The choice is not avaiable! Using the default difficulty (Normal).\n";
+            delay = 100;
+    }
+}
+
 void Setup() {
+    SetupGameSettings();
     gameOver = false;
     paused = false;
     dir = STOP;
@@ -85,7 +134,7 @@ void Logic() {
     if (paused) return;  // Nếu đang tạm dừng, không cập nhật logic
                                                                                                                                                                    
     DWORD currentTime = GetTickCount();
-    if (currentTime - lastMoveTime < 100)
+    if (currentTime - lastMoveTime < delay)
         return;
 
     lastMoveTime = currentTime;
@@ -143,15 +192,30 @@ void Draw() {
     cursorPosition.X = 0;
     cursorPosition.Y = 0;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), cursorPosition);
+    char vertical_line = static_cast<char>(186);
+    char horizontal_line = static_cast<char>(205);
+    char top_left_corner = static_cast<char>(201);
+    char top_right_corner = static_cast<char>(187);
+    char bottom_left_corner = static_cast<char>(200);
+    char bottom_right_corner = static_cast<char>(188);
 
-    for (int i = 0; i < width + 2; i++)
-        cout << "#";
+    ifstream input("file.txt");
+    fstream output;
+    output.open("file.txt");
+
+    for (int i = 0; i < width + 2; i++)//đường bo trên
+    {
+        if( i==0)cout<< top_left_corner;
+        else if ( i==width+1) cout<< top_right_corner;
+        else cout <<horizontal_line ;
+    }
+
     cout << endl;
 
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             if (j == 0)
-                cout << "#";
+                cout << vertical_line;// đường bo bên trái
 
             if (i == y && j == x)
                 cout << "O";
@@ -170,22 +234,30 @@ void Draw() {
             }
 
             if (j == width - 1)
-                cout << "#";
+                cout << vertical_line;//Đường bo bên phải
         }
         cout << endl;
     }
 
-    for (int i = 0; i < width + 2; i++)
-        cout << "#";
+    for (int i = 0; i < width + 2; i++)//Đường bo ở dưới
+    {
+        if( i==0)cout<< bottom_left_corner;
+        else if ( i==width+1) cout<< bottom_right_corner;
+        else cout <<horizontal_line ;
+    }
+
     cout << endl;
-    maxx = max(maxx,score);
+    input>>maxx;
+    if (maxx < score) maxx = score;
     cout << "Score: " << score << endl;
     cout << "Highest Score: " << maxx << endl;
+    output<<maxx;
     if (paused)
     {
         cout << "Game paused - Press P to continue." << endl;
     }
 }
+
 void ShowInstructions() {
     system("cls");
     cout << "=================== SNAKE GAME ===================" << endl;
@@ -195,6 +267,7 @@ void ShowInstructions() {
     cout << "  - Use 'S' to move DOWN" << endl;
     cout << "  - Use 'D' to move RIGHT" << endl;
     cout << "  - Press 'X' to exit the game" << endl;
+    cout << "  - Press 'P' to pause the game" << endl;
     cout << "\nObjective: Eat the '*' to grow the snake and score points." << endl;
     cout << "Avoid hitting the walls or your own tail!" << endl;
     cout << "\nPress any key to start playing..." << endl;
